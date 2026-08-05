@@ -1,13 +1,500 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Gohar Portfolio — Mechtech-Juniors</title>
-  </head>
-  <body>
-    <h1>Gohar Portfolio</h1>
-    <p>Ye temporary index.html hai jo GitHub Pages ko site publish karne ke liye dala gaya hai.</p>
-    <p>Agar aap apni asli website files push karenge to yeh replace ho jayega.</p>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gohar Afsha Kais Shaikh — Robotics Software Developer</title>
+<meta name="description" content="Portfolio of Gohar Afsha Kais Shaikh — ROS2, Nav2, AMR software developer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1626;
+    --bg-panel:#101f38;
+    --bg-panel-2:#0d1a2f;
+    --grid-line: rgba(111,183,201,0.12);
+    --trace: #6fb7c9;
+    --copper: #d17a3f;
+    --copper-bright: #e6935a;
+    --text: #e8eef5;
+    --text-muted: #8ca0bd;
+    --text-faint: #5b7085;
+    --ok: #7fbf8f;
+    --radius: 3px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--copper-bright); outline-offset:3px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--trace);
+  }
+
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(10,22,38,0.85);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--grid-line);
+  }
+  .navrow{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1080px; margin:0 auto;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace; font-size:0.85rem; color:var(--text);
+    letter-spacing:0.02em;
+  }
+  .brand span{color:var(--copper-bright);}
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; text-transform:lowercase;
+    color:var(--text-muted); text-decoration:none; letter-spacing:0.02em;
+    transition:color 0.2s;
+  }
+  nav a:hover{color:var(--copper-bright);}
+  .nav-toggle{display:none; background:none; border:1px solid var(--grid-line); color:var(--text); font-family:'IBM Plex Mono',monospace; padding:6px 10px; border-radius:var(--radius);}
+
+  @media (max-width:760px){
+    nav ul{display:none;}
+    .nav-toggle{display:inline-block;}
+    nav.open ul{
+      display:flex; flex-direction:column; position:absolute; top:56px; right:28px;
+      background:var(--bg-panel); border:1px solid var(--grid-line); padding:16px 20px; gap:14px; border-radius:var(--radius);
+    }
+  }
+
+  /* ---------- HERO / NODE GRAPH ---------- */
+  .hero{
+    padding:150px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-top{display:flex; flex-wrap:wrap; gap:48px; align-items:center;}
+  .hero-text{flex:1 1 380px;}
+  .hero-text .eyebrow{margin-bottom:14px; display:block;}
+  .hero-text h1{font-size:clamp(2rem, 4.4vw, 3.1rem); line-height:1.12; margin-bottom:18px;}
+  .hero-text h1 .accent{color:var(--copper-bright);}
+  .hero-text p{color:var(--text-muted); font-size:1rem; max-width:480px; margin-bottom:26px;}
+
+  .hero-links{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem;
+    padding:10px 18px; border-radius:var(--radius); text-decoration:none;
+    border:1px solid var(--grid-line); color:var(--text);
+    transition:border-color 0.2s, color 0.2s, transform 0.15s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{border-color:var(--copper-bright); color:var(--copper-bright); transform:translateY(-1px);}
+  .btn.primary{background:var(--copper); border-color:var(--copper); color:#0a1626; font-weight:500;}
+  .btn.primary:hover{background:var(--copper-bright); border-color:var(--copper-bright); color:#0a1626;}
+
+  .graph-wrap{flex:1 1 380px; min-width:300px;}
+  svg#nodegraph{width:100%; height:auto; display:block;}
+  .node-circle{fill:var(--bg-panel); stroke:var(--trace); stroke-width:1.4; cursor:pointer; transition:stroke 0.2s, fill 0.2s;}
+  .node-group:hover .node-circle{stroke:var(--copper-bright); fill:var(--bg-panel-2);}
+  .node-label{font-family:'IBM Plex Mono', monospace; fill:var(--text); font-size:11px; pointer-events:none;}
+  .node-sub{font-family:'IBM Plex Mono', monospace; fill:var(--text-faint); font-size:8.5px; pointer-events:none;}
+  .edge-line{stroke:var(--grid-line); stroke-width:1.2; fill:none;}
+  .packet{fill:var(--copper-bright); filter:drop-shadow(0 0 3px var(--copper-bright));}
+  .root-node .node-circle{stroke:var(--copper-bright); stroke-width:1.8;}
+
+  /* ---------- SECTIONS SHARED ---------- */
+  section{padding:80px 0; position:relative;}
+  .section-head{margin-bottom:40px; max-width:640px;}
+  .section-head .eyebrow{margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(1.5rem, 2.6vw, 2rem);}n  .section-head p{color:var(--text-muted); margin-top:10px;}
+  .divider{height:1px; background:var(--grid-line); border:none;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns: 1.1fr 1fr; gap:40px;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-card{
+    background:var(--bg-panel); border:1px solid var(--grid-line); border-radius:var(--radius);
+    padding:26px; position:relative;
+  }
+  .about-card::before{
+    content:attr(data-tag); position:absolute; top:-11px; left:16px;
+    background:var(--bg); padding:0 8px; font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem; color:var(--trace); letter-spacing:0.08em;
+  }
+  .about-card p{color:var(--text-muted); font-size:0.94rem; margin-bottom:10px;}
+  .about-card p:last-child{margin-bottom:0;}
+  .about-card strong{color:var(--text); font-weight:500;}
+
+  .skills-list{display:flex; flex-direction:column; gap:16px;}
+  .skill-row{display:flex; gap:14px; align-items:baseline;}
+  .skill-key{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--text-faint); min-width:96px;}
+  .skill-vals{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; padding:4px 10px;
+    border:1px solid var(--grid-line); border-radius:2px; color:var(--text-muted);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{display:flex; flex-direction:column; gap:22px;}
+  .proj-card{
+    background:var(--bg-panel); border:1px solid var(--grid-line); border-radius:var(--radius);
+    padding:28px; display:grid; grid-template-columns: 40px 1fr; gap:20px;
+    transition:border-color 0.2s;
+  }
+  .proj-card:hover{border-color:var(--trace);}
+  .proj-num{font-family:'IBM Plex Mono', monospace; color:var(--text-faint); font-size:0.78rem; padding-top:4px;}
+  .proj-title-row{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+  .proj-title-row h3{font-size:1.15rem;}
+  .proj-status{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--ok); border:1px solid rgba(127,191,143,0.35); padding:2px 8px; border-radius:2px;}
+  .proj-card p{color:var(--text-muted); font-size:0.92rem; margin-bottom:12px;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:8px;}
+
+  /* ---------- ERRORS / TERMINAL ---------- */
+  .terminal{
+    background:#08111f; border:1px solid var(--grid-line); border-radius:var(--radius);
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; overflow:hidden;
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px; padding:10px 14px;
+    background:var(--bg-panel-2); border-bottom:1px solid var(--grid-line);
+  }
+  .term-dot{width:9px; height:9px; border-radius:50%; background:var(--grid-line);}
+  .term-title{color:var(--text-faint); font-size:0.72rem; margin-left:6px;}
+  .term-body{padding:20px 22px; max-height:420px; overflow-y:auto;}
+  .log-entry{margin-bottom:18px;}
+  .log-entry:last-child{margin-bottom:0;}
+  .log-err{color:#e08a6e;}
+  .log-fix{color:var(--text-muted); padding-left:18px; margin-top:4px; display:block;}
+  .log-fix::before{content:"→ "; color:var(--ok);}
+  .log-tag{color:var(--text-faint);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:var(--bg-panel); border:1px solid var(--grid-line); border-radius:var(--radius);
+    padding:40px; text-align:center;
+  }
+  .contact-card h2{margin-bottom:12px;}
+  .contact-card p{color:var(--text-muted); margin-bottom:26px;}
+  .contact-links{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+
+  footer{padding:30px 0; text-align:center;}
+  footer p{color:var(--text-faint); font-size:0.78rem; font-family:'IBM Plex Mono', monospace;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navrow">
+    <div class="brand">gohar<span>@</span>robotics</div>
+    <nav id="mainnav">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">menu</button>
+      <ul>
+        <li><a href="#about">about</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#errors">errors_solved</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-top">
+      <div class="hero-text">
+        <span class="eyebrow">/robotics_software_developer</span>
+        <h1>Gohar Afsha Kais Shaikh —<br>building the <span class="accent">software AMRs run on.</span></h1>
+        <p>Final-year Robotics &amp; Automation engineer working on ROS2 navigation stacks, AMR hardware, and the dashboards that operators actually touch.</p>
+        <div class="hero-links">
+          <a class="btn primary" href="#projects">view projects</a>
+          <a class="btn" href="https://github.com/Mechtech-Juniors" target="_blank" rel="noopener">github ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/gohar-shaikh-aa3a942a3" target="_blank" rel="noopener">linkedin ↗</a>
+        </div>
+      </div>
+      <div class="graph-wrap" aria-hidden="true">
+        <svg id="nodegraph" viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg">
+          <!-- edges -->
+          <g class="edges">
+            <path class="edge-line" id="edge-about"   d="M240,190 C200,150 160,120 120,90"/>
+            <path class="edge-line" id="edge-skills"  d="M240,190 C280,150 320,120 360,90"/>
+            <path class="edge-line" id="edge-projects" d="M240,190 C190,230 140,270 95,300"/>
+            <path class="edge-line" id="edge-errors"  d="M240,190 C290,230 340,270 385,300"/>
+            <path class="edge-line" id="edge-contact" d="M240,190 C240,240 240,300 240,340"/>
+          </g>
+          <!-- packets (animated) -->
+          <g class="packets">
+            <circle class="packet" r="3"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#edge-about"/></animateMotion></circle>
+            <circle class="packet" r="3"><animateMotion dur="3.6s" repeatCount="indefinite" begin="0.4s"><mpath href="#edge-skills"/></animateMotion></circle>
+            <circle class="packet" r="3"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.8s"><mpath href="#edge-projects"/></animateMotion></circle>
+            <circle class="packet" r="3"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.2s"><mpath href="#edge-errors"/></animateMotion></circle>
+            <circle class="packet" r="3"><animateMotion dur="3s" repeatCount="indefinite" begin="0.2s"><mpath href="#edge-contact"/></animateMotion></circle>
+          </g>
+          <!-- nodes -->
+          <g class="node-group root-node" data-target="#top">
+            <circle class="node-circle" cx="240" cy="190" r="34"/>
+            <text class="node-label" x="240" y="187" text-anchor="middle">/gohar</text>
+            <text class="node-sub" x="240" y="200" text-anchor="middle">root</text>
+          </g>
+          <g class="node-group" data-target="#about">
+            <circle class="node-circle" cx="120" cy="90" r="26"/>
+            <text class="node-label" x="120" y="87" text-anchor="middle">/about</text>
+            <text class="node-sub" x="120" y="99" text-anchor="middle">bio</text>
+          </g>
+          <g class="node-group" data-target="#skills">
+            <circle class="node-circle" cx="360" cy="90" r="26"/>
+            <text class="node-label" x="360" y="87" text-anchor="middle">/skills</text>
+            <text class="node-sub" x="360" y="99" text-anchor="middle">stack</text>
+          </g>
+          <g class="node-group" data-target="#projects">
+            <circle class="node-circle" cx="95" cy="300" r="26"/>
+            <text class="node-label" x="95" y="297" text-anchor="middle">/projects</text>
+            <text class="node-sub" x="95" y="309" text-anchor="middle">builds</text>
+          </g>
+          <g class="node-group" data-target="#errors">
+            <circle class="node-circle" cx="385" cy="300" r="26"/>
+            <text class="node-label" x="385" y="297" text-anchor="middle">/errors</text>
+            <text class="node-sub" x="385" y="309" text-anchor="middle">debug_log</text>
+          </g>
+          <g class="node-group" data-target="#contact">
+            <circle class="node-circle" cx="240" cy="352" r="24"/>
+            <text class="node-label" x="240" y="349" text-anchor="middle">/contact</text>
+            <text class="node-sub" x="240" y="361" text-anchor="middle">reach</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider wrap">
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">01 / about</span>
+      <h2>Who's running this node</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card" data-tag="profile.md">
+        <p><strong>Final-year B.E. Robotics &amp; Automation</strong> student at MET Bhujbal Knowledge City, Nashik, graduating 2026.</p>
+        <p>Currently interning at <strong>SVR Robotics / SVR Info Tech</strong>, building real AMRs end to end — hardware schematics, ROS2 nodes, and the web dashboards that operators use to run them.</p>
+        <p>Founder of <strong>Mechtech Juniors</strong>, a robotics education initiative helping diploma and B.Tech students actually get through the fragmented ROS2 learning curve.</p>
+      </div>
+      <div class="about-card" data-tag="mission.md">
+        <p>Long-term goal: build deep experience and earn well as a robotics software developer first, then launch her own robotics venture.</p>
+        <p>Actively looking for <strong>ROS Developer / Robotics Software Engineer</strong> roles — based in Pune, open to remote and WFH positions across India and abroad.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider wrap">
+
+  <!-- SKILLS -->
+  <section id="skills" class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">02 / skills</span>
+      <h2>Stack</h2>
+    </div>
+    <div class="skills-list">
+      <div class="skill-row">
+        <span class="skill-key">navigation</span>
+        <div class="skill-vals">
+          <span class="chip">ROS2 Humble</span>
+          <span class="chip">Nav2</span>
+          <span class="chip">SLAM</span>
+          <span class="chip">AMCL</span>
+          <span class="chip">TF2</span>
+          <span class="chip">Costmaps</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">software</span>
+        <div class="skill-vals">
+          <span class="chip">Python (rclpy)</span>
+          <span class="chip">React / Vite</span>
+          <span class="chip">rosbridge / roslib.js</span>
+          <span class="chip">React Router</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">hardware</span>
+        <div class="skill-vals">
+          <span class="chip">EasyEDA</span><span class="chip">Motor driver interfacing</span><span class="chip">RS485 / UART</span><span class="chip">Power systems (LiFePO4)</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">sim &amp; tools</span>
+        <div class="skill-vals">
+          <span class="chip">Gazebo</span>
+          <span class="chip">Webots</span>
+          <span class="chip">colcon</span>
+          <span class="chip">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider wrap">
+
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">03 / projects</span>
+      <h2>Things that actually drive around</h2>
+      <p>Real robots, not tutorials.</p>
+    </div>
+    <div class="projects">
+
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div>
+          <div class="proj-title-row">
+            <h3>CR-01 — AMR Cleaning Robot</h3>
+            <span class="proj-status">in progress</span>
+          </div>
+          <p>A real autonomous cleaning robot built at SVR Robotics, spanning hardware schematics, ROS2 nodes, and a full operator dashboard. Designed the power tree from 48V LiFePO4 packs through buck converters to the onboard NUC, sensors, and motor drivers, plus EasyEDA schematics for the drive and sensor stack.</p>
+          <p>Built a multi-page React GUI (login, live map, cleaning schedule, settings) over rosbridge/roslib.js, backed by a Python ROS2 bridge node handling subprocess-based robot launch control. Currently adding teleop, map save/list, and keep-out zone drawing directly on the saved map.</p>
+          <div class="proj-tags">
+            <span class="chip">ROS2</span><span class="chip">React/Vite</span><span class="chip">EasyEDA</span><span class="chip">rosbridge</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div>
+          <div class="proj-title-row">
+            <h3>Reception Robot — Nav2 Stack (gati_bot)</h3>
+            <span class="proj-status">shipped</span>
+          </div>
+          <p>End-to-end ROS2 Humble navigation stack for a physical reception AMR: URDF design, AMCL localization, TF2 tree, and costmap tuning, with GIMP-authored keepout masks wired into nav2_params.yaml and lifecycle nodes.</p>
+          <p>Validated in Gazebo and Webots before deploying to the real robot, with a rosbridge + roslib.js web dashboard for live monitoring.</p>
+          <div class="proj-tags">
+            <span class="chip">Nav2</span><span class="chip">AMCL</span><span class="chip">URDF</span><span class="chip">Gazebo</span><span class="chip">Webots</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03</div>
+        <div>
+          <div class="proj-title-row">
+            <h3>Mechtech Juniors</h3>
+            <span class="proj-status">running</span>
+          </div>
+          <p>A robotics education initiative built after living through a fragmented ROS2 learning landscape firsthand. Built the curriculum, a course website deployed via Netlify, and ROS1-vs-ROS2 teaching materials for diploma and B.Tech students.</p>
+          <div class="proj-tags">
+            <span class="chip">Curriculum design</span><span class="chip">ROS1 vs ROS2</span><span class="chip">Netlify</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider wrap">
+
+  <!-- ERRORS SOLVED -->
+  <section id="errors" class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">04 / errors_solved</span>
+      <h2>Debug log</h2>
+      <p>Robotics rarely runs first try. Here's what actually got fixed, not the highlight reel.</p>
+    </div>
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">debug_log.txt</span>
+      </div>
+      <div class="term-body">
+        <div class="log-entry">
+          <span class="log-err">[ERROR] gzserver: zombie process holding simulation port after crash</span>
+          <span class="log-fix">Killed orphaned gzserver processes and added a clean shutdown hook before every relaunch. <span class="log-tag">— reception robot / Gazebo</span></span>
+        </div>
+        <div class="log-entry">
+          <span class="log-err">[ERROR] TF2: use_sim_time mismatch between nodes causing timestamp drops</span>
+          <span class="log-fix">Enforced a single consistent use_sim_time value across every launch file and node. <span class="log-tag">— Nav2 stack</span></span>
+        </div>
+        <div class="log-entry">
+          <span class="log-err">[ERROR] nav2_params.yaml: parse failure from bad indentation in costmap plugin block</span>
+          <span class="log-fix">Rebuilt the YAML block plugin-by-plugin, validating each namespace separator before merging. <span class="log-tag">— keepout filter setup</span></span>
+        </div>
+        <div class="log-entry">
+          <span class="log-err">[ERROR] scan topic mismatch: costmap not receiving LaserScan data</span>
+          <span class="log-fix">Traced remapping through the launch file and aligned the topic name across the driver, URDF, and costmap config. <span class="log-tag">— rplidar / gati_bot</span></span>
+        </div>
+        <div class="log-entry">
+          <span class="log-err">[ERROR] colcon build: package not found despite being in src/</span>
+          <span class="log-fix">Found the build was running from the wrong workspace root; fixed by always sourcing setup.bash from the correct ws before building. <span class="log-tag">— workspace setup</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider wrap">
+
+  <!-- CONTACT -->
+  <section id="contact" class="wrap">
+    <div class="contact-card">
+      <span class="eyebrow">05 / contact</span>
+      <h2 style="margin-top:12px;">Let's talk robots</h2>
+      <p>Open to ROS Developer / Robotics Software Engineer roles — Pune, remote, or WFH.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:gauharsk04@gmail.com">email me</a>
+        <a class="btn" href="https://github.com/Mechtech-Juniors" target="_blank" rel="noopener">github ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/gohar-shaikh-aa3a942a3" target="_blank" rel="noopener">linkedin ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>// built by Gohar Afsha Kais Shaikh — deployed via GitHub Pages</p>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const nav = document.getElementById('mainnav');
+  navToggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+  // node graph -> scroll to section
+  document.querySelectorAll('.node-group[data-target]').forEach(g => {
+    g.style.cursor = 'pointer';
+    g.addEventListener('click', () => {
+      const target = g.getAttribute('data-target');
+      if(target === '#top'){ window.scrollTo({top:0, behavior:'smooth'}); return; }
+      const el = document.querySelector(target);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+</script>
+
+</body>
 </html>
